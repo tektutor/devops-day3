@@ -4,10 +4,36 @@
    General Tab
    Project name - BuildDockerImage
 
+   ---------
+
    Source Code Management
    Select Git
 
    Repositories - Git repo on your system or GitHub
-   Credentials - Git Credentials
+   Credentials - Your Git Credentials
+
+   ---------
+
+   Build Triggers 
+  
+   Poll SCM
+   Schedule - H/02 * * * *
+
+   ----- 
+
+   Build 
+
+   Click on "Add Build Step" button.
+
+   In the Execute shell, type the below
+
+   docker build . -t tektutor/devops-slave-image 
+
+   -------
+
+   Apply and Save the configurations.
+
+
+   
 
    

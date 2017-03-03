@@ -1,0 +1,35 @@
+1. Create a FreeStyle Jenkins Job
+
+2. General
+   Project name - BuildCRMProject
+
+   Restrict where this project can be run
+   Label Expression - docker-slave-machine
+
+3. Source Code Management
+   None
+
+4. Build Triggers
+   Build after other projects are built
+   Projects to watch DevOps BuildDockerImage 
+      Trigger only if build is stable
+
+5. Build 
+   Execute Shell
+   Command
+   cd /home/jenkins/CRM
+
+   tar xvfz ./apache-maven-3.3.9-bin.tar.gz
+   tar xvfz ./jdk-8u112-linux-x64.tar.gz
+   export MAVEN_HOME=apache-maven-3.3.9
+   export JAVA_HOME=jdk1.8.0_112
+   export PATH=$MAVEN_HOME/bin:$JAVA_HOME/bin:$PATH
+
+   mvn clean test 
+
+6. Apply and Save
+ 
+
+ 
+
+
