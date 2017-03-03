@@ -1,0 +1,50 @@
+1. In Jenkins, install docker plugin ( Navigate to Jenkins --> Manage Jenkins --> Manage Plugins ) 
+
+2. Enable the Remote API option in Docker server ( From command terminal )
+   
+   sudo service docker stop
+   sudo docker daemon -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
+
+3. Configure docker plugin ( Navigate to Jenkins --> Configure Sytem --> Cloud )
+   Add a Cloud and configure 
+
+   Docker Name - docker-slave-configuration
+
+   Docker URL - tcp://localhost:4243
+
+   Docker API Version - Leave it empty
+
+   Credentials - Leave it to None
+   
+   Connection Timeout - 0
+  
+   Read Timeout - 0
+
+   Container Cap - 100
+
+   After the above configurations, click the Test connection and see if Jenkins is able to communicate
+   with Docker Server.  Assumption is the Docker Server Remote API is enabled. 
+
+   If all goes well, the test should result in displaying the Docker API version. 
+
+
+4. In Jenkins --> Manage Jenkins --> Configure System --> Cloud,  click the "Add Docker Template" button.
+
+   Perform the below configurations.
+
+   Docker image - tektutor/devops-slave-image
+
+   Volumes - /home/train/.m2:/home/jenkins/.m2
+
+   Remote File System Root - /home/jenkins
+
+   Labels - docker-slave-machine
+
+   Launch Method - Docker SSH computer launcher
+  
+   Credentials - jenkins/jenkins
+
+   Remote FS Root Mapping - /home/train/.jenkins
+
+5. Apply and Save the configurations.
+

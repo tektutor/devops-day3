@@ -1,0 +1,13 @@
+1. Create a FreeStyle Jenkins Job
+2. Configuration the below
+
+   General Tab
+   Project name - BuildDockerImage
+
+   Source Code Management
+   Select Git
+
+   Repositories - Git repo on your system or GitHub
+   Credentials - Git Credentials
+
+   
