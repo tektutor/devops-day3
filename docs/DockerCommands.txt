@@ -1,0 +1,48 @@
+To start the docker server
+sudo service docker start
+
+To stop the docker server
+sudo service docker stop
+
+To restart the docker server
+sudo service docker restart
+
+To list the docker containers
+docker ps
+
+To list all the docker containers irrespective of thieir current state
+docker ps -a
+
+To list all the docker images
+docker images
+
+To start a container
+docker start <container-id>
+
+To stop a container
+docker stop <container-id>
+
+To stop many container
+docker stop <container-id1> <container-id2> ...
+
+To stop all the containers that are running now
+docker stop $(docker ps -aq)
+
+To kill a container
+docker kill <container-id>
+
+To kill all the containers that are running now
+docker kill $(docker ps -aq)
+
+To get more details about a container
+docker inspect <container-id>
+
+To find the IP address of a container
+docker inspect <container-id> | grep IPAddress
+
+To connect to docker container shell
+docker run -it ubuntu /bin/bash
+
+To run a container in detached mode and connect to the detached container's terminal
+docker run -dit ubuntu /bin/bash
+docker exec <container-id> -it /bin/bash
